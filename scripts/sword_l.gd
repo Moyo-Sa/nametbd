@@ -11,7 +11,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if not monitoring:
 		return
 	print(body, "entered the SwordL area")
-	
+
 	if body.is_in_group("villain"):
 		match body.name:
 			"Goblin":

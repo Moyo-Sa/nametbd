@@ -175,4 +175,4 @@ drag_vertical_enabled = true
 position = Vector2(536, 395)
 
 [node name="Nightbourne" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(391, 331)
+position = Vector2(1149, 249)

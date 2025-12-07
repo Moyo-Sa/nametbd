@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var state_machine: CharacterStateMachine = $CharacterStateMachine
 
+@onready var sword_s: Area2D = $SwordS
+@onready var sword_l: Area2D = $SwordL
 
 
 @export var speed: float = 130.0
@@ -21,6 +23,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #player process function
 func _physics_process(delta):
+	
+	if not Input.is_action_pressed("slash"):  
+		sword_s.monitoring = false
+		
+	if not Input.is_action_pressed("lunge"):  
+		sword_l.monitoring = false
 	# Add the velocity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
