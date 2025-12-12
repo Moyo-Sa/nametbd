@@ -14,6 +14,8 @@ var is_dead: bool = false
 signal health_updated(new_health) 
 
 func _ready():
+	if is_dead:
+		return
 	add_to_group("villain")
 	healthbar.use_game_manager = false 
 	healthbar.max_value = max_health
@@ -43,10 +45,8 @@ func die():
 	
 	is_dead = true
 	death_sound.play()
-	Engine.time_scale = 0.5
 	animation_player.play("die")	
 	print("Hunter dies")
-	
 	await animation_player.animation_finished
 	queue_free()
 	

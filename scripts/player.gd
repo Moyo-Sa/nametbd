@@ -23,18 +23,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #player process function
 func _physics_process(delta):
-	
-	if not Input.is_action_pressed("slash"):  
-		sword_s.monitoring = false
-		
-	if not Input.is_action_pressed("lunge"):  
-		sword_l.monitoring = false
-	# Add the velocity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
 	# Get the input direction and handle the movement/deceleration.
-	direction = Input.get_vector("move_left", "move_right", "up", "down")
+	direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	#handle flipping sprite image
 	if direction.x > 0:

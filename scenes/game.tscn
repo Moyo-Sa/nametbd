@@ -172,7 +172,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="Goblin" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(536, 395)
+position = Vector2(234, 101)
 
 [node name="Nightbourne" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(1149, 249)
+position = Vector2(747, 395)

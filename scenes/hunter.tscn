@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cbw56ibje84d8"]
+[gd_scene load_steps=74 format=3 uid="uid://cbw56ibje84d8"]
 
 [ext_resource type="Texture2D" uid="uid://bcj8vdhho0hqr" path="res://assets/The Blind Huntress/Sprite Sheet/1. Idle 48 x 48.png" id="1_660ry"]
 [ext_resource type="Texture2D" uid="uid://c20m77ggmmugb" path="res://assets/The Blind Huntress/Sprite Sheet/5. Attack 131 x 56.png" id="1_kr1wx"]
@@ -548,6 +548,64 @@ _data = {
 &"run": SubResource("Animation_faelo")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_faelo"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7twrj"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5srw"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_56jsa"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csmtb"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wy7gl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n2mot"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w24eb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yn8yr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsewx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ri4t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68wxw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c32pt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_51fwa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pfeon"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_77d5a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5oxdq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_infth"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_se6nu"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_faelo"]
+states/attack/node = SubResource("AnimationNodeAnimation_faelo")
+states/attack/position = Vector2(579.96484, -20.774994)
+states/die/node = SubResource("AnimationNodeAnimation_7twrj")
+states/die/position = Vector2(748.6899, 100.024994)
+states/hit/node = SubResource("AnimationNodeAnimation_o5srw")
+states/hit/position = Vector2(564.0774, 185.24374)
+states/idle/node = SubResource("AnimationNodeAnimation_56jsa")
+states/idle/position = Vector2(401.24982, 100.4375)
+states/run/node = SubResource("AnimationNodeAnimation_csmtb")
+states/run/position = Vector2(398.96985, -37.950005)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy7gl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_n2mot"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_w24eb"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_yn8yr"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_jsewx"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0ri4t"), "hit", "run", SubResource("AnimationNodeStateMachineTransition_68wxw"), "hit", "attack", SubResource("AnimationNodeStateMachineTransition_c32pt"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_51fwa"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_pfeon"), "hit", "die", SubResource("AnimationNodeStateMachineTransition_77d5a"), "attack", "die", SubResource("AnimationNodeStateMachineTransition_5oxdq"), "run", "die", SubResource("AnimationNodeStateMachineTransition_infth"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_se6nu")]
+graph_offset = Vector2(285.6699, -132.585)
+
 [node name="Hunter" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 3
@@ -585,3 +643,8 @@ offset_bottom = -16.0
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_faelo")
 bus = &"sfx"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../AnimatedSprite2D")
+tree_root = SubResource("AnimationNodeStateMachine_faelo")
+anim_player = NodePath("../AnimationPlayer")

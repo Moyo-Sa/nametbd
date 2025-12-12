@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var healthbar: ProgressBar = $Healthbar
 @onready var death_sound: AudioStreamPlayer2D = $DeathSound
 @export var gravity: float = 980.0
+@onready var state_machine: CharacterStateMachine = $CharacterStateMachine
 
 #health variables
 @onready var damage_amount: int = 20
@@ -14,6 +15,9 @@ var is_dead: bool = false
 signal health_updated(new_health) 
 
 func _ready():
+	if is_dead:
+		return
+	
 	add_to_group("villain")
 	healthbar.use_game_manager = false 
 	healthbar.max_value = max_health
@@ -35,15 +39,16 @@ func hit(damage: float = 0):
 	if damage == 0:
 		damage = damage_amount
 	set_health(current_health - damage_amount)
-	animation_player.play("hit")	
+	state_machine.switch_state(state_machine.get_node("Hit"))
+
 
 func die():
 	if is_dead:
 		return
 	
 	is_dead = true
-	Engine.time_scale = 0.5
 	animation_player.play("die")	
+	print("I got to nighbourne die trigger")
 	death_sound.play()
 	print("Nightbourne dies")
 	await animation_player.animation_finished

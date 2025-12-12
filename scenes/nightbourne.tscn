@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://x3wbhb5bbs2h"]
+[gd_scene load_steps=40 format=3 uid="uid://x3wbhb5bbs2h"]
 
 [ext_resource type="Script" uid="uid://dbn43rxdyl6a8" path="res://scripts/nightbourne.gd" id="1_aufj2"]
 [ext_resource type="Texture2D" uid="uid://bap6jgu8qphnt" path="res://assets/The Shadowed Wetlands Boss v1.1/Sprite Sheet/idle.png" id="1_mqof6"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b48i2c5452rk3" path="res://assets/The Shadowed Wetlands Boss v1.1/Sprite Sheet/new/hit.png" id="3_uihvj"]
 [ext_resource type="AudioStream" uid="uid://csx5jcw8lj43g" path="res://assets/sounds/explosion.wav" id="7_ptnj4"]
 [ext_resource type="PackedScene" uid="uid://b6bwju7xgfpx0" path="res://scenes/healthbar.tscn" id="8_hfvbd"]
+[ext_resource type="Script" uid="uid://bmjf2vqljuhm7" path="res://scripts/character_state_machine.gd" id="9_s70s0"]
+[ext_resource type="Script" uid="uid://wyq0t0odpsub" path="res://scripts/states.gd" id="10_yq0xe"]
+[ext_resource type="Script" uid="uid://cscoth86t3llt" path="res://scripts/villainSM/hit.gd" id="11_yq0xe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqof6"]
 size = Vector2(25, 57)
@@ -216,7 +219,7 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_mjbr2"]
-resource_name = "walk"
+resource_name = "run"
 length = 1.4
 loop_mode = 1
 step = 0.1
@@ -264,8 +267,66 @@ _data = {
 &"die": SubResource("Animation_qlh6l"),
 &"hit": SubResource("Animation_aufj2"),
 &"idle": SubResource("Animation_mqof6"),
-&"walk": SubResource("Animation_mjbr2")
+&"run": SubResource("Animation_mjbr2")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_faelo"]
+animation = &"attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7twrj"]
+animation = &"die"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5srw"]
+animation = &"hit"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_56jsa"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_csmtb"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wy7gl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n2mot"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w24eb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yn8yr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jsewx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ri4t"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68wxw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c32pt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_51fwa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pfeon"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_77d5a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5oxdq"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_infth"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_se6nu"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfvbd"]
+states/attack/node = SubResource("AnimationNodeAnimation_faelo")
+states/attack/position = Vector2(579.96484, -20.774994)
+states/die/node = SubResource("AnimationNodeAnimation_7twrj")
+states/die/position = Vector2(748.6899, 100.024994)
+states/hit/node = SubResource("AnimationNodeAnimation_o5srw")
+states/hit/position = Vector2(564.0774, 185.24374)
+states/idle/node = SubResource("AnimationNodeAnimation_56jsa")
+states/idle/position = Vector2(401.24982, 100.4375)
+states/run/node = SubResource("AnimationNodeAnimation_csmtb")
+states/run/position = Vector2(398.96985, -37.950005)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy7gl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_n2mot"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_w24eb"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_yn8yr"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_jsewx"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0ri4t"), "hit", "run", SubResource("AnimationNodeStateMachineTransition_68wxw"), "hit", "attack", SubResource("AnimationNodeStateMachineTransition_c32pt"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_51fwa"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_pfeon"), "hit", "die", SubResource("AnimationNodeStateMachineTransition_77d5a"), "attack", "die", SubResource("AnimationNodeStateMachineTransition_5oxdq"), "run", "die", SubResource("AnimationNodeStateMachineTransition_infth"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_se6nu")]
+graph_offset = Vector2(285.6699, -132.585)
 
 [node name="Nightbourne" type="CharacterBody2D"]
 collision_layer = 8
@@ -295,3 +356,38 @@ offset_left = 1.0
 offset_top = -19.0
 offset_right = 77.0
 offset_bottom = -15.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_hfvbd")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "character", "animation_tree")]
+script = ExtResource("9_s70s0")
+current_state = NodePath("Idle")
+character = NodePath("..")
+animation_tree = NodePath("../AnimationTree")
+metadata/_custom_type_script = "uid://bmjf2vqljuhm7"
+
+[node name="Idle" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_yq0xe")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Run" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_yq0xe")
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Attack" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_yq0xe")
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("dead_state")]
+script = ExtResource("11_yq0xe")
+dead_state = NodePath("../Die")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Die" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("10_yq0xe")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
