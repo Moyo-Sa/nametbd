@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkckgl5yi2b82"
-path="res://.godot/imported/NightBorne.png-492d881b9e0b5c94473f95aa8e638352.ctex"
+uid="uid://btlgrsj4uq2ph"
+path="res://.godot/imported/Terrain (16x16).png-1356d04e295835953a063adecf0232e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NightBorne/NightBorne.png"
-dest_files=["res://.godot/imported/NightBorne.png-492d881b9e0b5c94473f95aa8e638352.ctex"]
+source_file="res://assets/World/Terrain (16x16).png"
+dest_files=["res://.godot/imported/Terrain (16x16).png-1356d04e295835953a063adecf0232e7.ctex"]
 
 [params]
 

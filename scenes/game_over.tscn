@@ -1,0 +1,178 @@
+[gd_scene load_steps=22 format=3 uid="uid://cfm8833y6nwxe"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_racf3"]
+[ext_resource type="Texture2D" uid="uid://di20thgdalfje" path="res://assets/World/background.png" id="2_tbwuq"]
+[ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="2_wqhvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbwuq"]
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_racf3"]
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m3ot"]
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3hpu"]
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irg28"]
+region = Rect2(128, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jtsn"]
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bugq"]
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wawo4"]
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56v3a"]
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o57t2"]
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq3qu"]
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p6qk"]
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4bmq"]
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8nfu"]
+region = Rect2(128, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vumy4"]
+region = Rect2(160, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlwav"]
+region = Rect2(192, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oye1b"]
+region = Rect2(224, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4bmq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbwuq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_racf3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7m3ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3hpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irg28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jtsn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8bugq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wawo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56v3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o57t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq3qu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p6qk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4bmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8nfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vumy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlwav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oye1b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_racf3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -162.0
+offset_top = -314.0
+offset_right = 414.0
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tbwuq")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_left = 558.0
+offset_top = 272.0
+offset_right = 678.0
+offset_bottom = 316.0
+theme_override_font_sizes/font_size = 20
+text = "Game Over! "
+
+[node name="newGame" type="Button" parent="."]
+offset_left = 387.0
+offset_top = 359.0
+offset_right = 604.5
+offset_bottom = 412.5
+theme_override_fonts/font = ExtResource("2_wqhvx")
+text = "New Game"
+
+[node name="retry" type="Button" parent="."]
+offset_left = 615.0
+offset_top = 359.0
+offset_right = 839.0
+offset_bottom = 413.0
+theme_override_fonts/font = ExtResource("2_wqhvx")
+text = "Retry"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(624, 492)
+scale = Vector2(5.4375, 5.75)
+sprite_frames = SubResource("SpriteFrames_s4bmq")
+autoplay = "default"
+frame_progress = 0.041290026
+
+[node name="scoreLabel" type="Label" parent="."]
+offset_left = 497.0
+offset_top = 321.0
+offset_right = 867.0
+offset_bottom = 373.0
+text = "You collected X out of Y coins!"
+
+[connection signal="pressed" from="newGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="retry" to="." method="_on_retry_pressed"]

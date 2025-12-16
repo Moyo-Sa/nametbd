@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://kixaebip3qei"]
+
+[ext_resource type="Script" uid="uid://b3nks2qt1p2tw" path="res://scripts/attack_zone.gd" id="1_d27gh"]
+
+[node name="AttackZone" type="Area2D"]
+script = ExtResource("1_d27gh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

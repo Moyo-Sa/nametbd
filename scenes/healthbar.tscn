@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wl12"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjxg4"]
-bg_color = Color(0.6, 0.6, 0.78431374, 1)
+bg_color = Color(0.42367738, 0.18975225, 0.3641214, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wl12"]
 
@@ -20,6 +20,7 @@ offset_bottom = 4.0
 theme_override_fonts/font = ExtResource("1_8wl12")
 theme_override_styles/background = SubResource("StyleBoxEmpty_8wl12")
 theme_override_styles/fill = SubResource("StyleBoxFlat_vjxg4")
+max_value = 200.0
 show_percentage = false
 script = ExtResource("2_vjxg4")
 

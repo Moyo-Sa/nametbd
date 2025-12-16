@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dha31c1vgarto"]
+
+[ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="1_wofee"]
+[ext_resource type="Script" uid="uid://bcypkm1feuv3m" path="res://scripts/v_healthbar.gd" id="2_wofee"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8wl12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vjxg4"]
+bg_color = Color(0.42352942, 0.1882353, 0.3647059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wl12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ulkio"]
+bg_color = Color(0.95686275, 0.4117647, 0.12156863, 1)
+
+[node name="VHealthbar" type="ProgressBar"]
+z_index = 1
+offset_right = 240.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("1_wofee")
+theme_override_styles/background = SubResource("StyleBoxEmpty_8wl12")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vjxg4")
+show_percentage = false
+script = ExtResource("2_wofee")
+
+[node name="Damage" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_wofee")
+theme_override_styles/background = SubResource("StyleBoxFlat_8wl12")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ulkio")
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true

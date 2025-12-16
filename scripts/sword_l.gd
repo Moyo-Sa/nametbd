@@ -22,4 +22,4 @@ func _on_body_entered(body: Node2D) -> void:
 			"Nightbourne":
 				body.hit(20)
 			_:
-				body.hit()
+				body.hit(10)

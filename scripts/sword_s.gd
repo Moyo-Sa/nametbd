@@ -15,10 +15,10 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("villain"):
 		match body.name:
 			"Goblin":
-				body.hit(40)
+				body.hit(50)
 			"Hunter":
-				body.hit(8)
+				body.hit(10)
 			"Nightbourne":
-				body.hit(16)
+				body.hit(20)
 			_:
-				body.hit()
+				body.hit(10)

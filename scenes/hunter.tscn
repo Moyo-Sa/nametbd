@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cbw56ibje84d8"]
+[gd_scene load_steps=86 format=3 uid="uid://cbw56ibje84d8"]
 
 [ext_resource type="Texture2D" uid="uid://bcj8vdhho0hqr" path="res://assets/The Blind Huntress/Sprite Sheet/1. Idle 48 x 48.png" id="1_660ry"]
 [ext_resource type="Texture2D" uid="uid://c20m77ggmmugb" path="res://assets/The Blind Huntress/Sprite Sheet/5. Attack 131 x 56.png" id="1_kr1wx"]
@@ -6,8 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://wj7jvrle4no1" path="res://assets/The Blind Huntress/Sprite Sheet/8. Death 76 x 48.png" id="2_h7gi6"]
 [ext_resource type="Texture2D" uid="uid://bsuw5crhe1aw6" path="res://assets/The Blind Huntress/Sprite Sheet/7. Hit 48 x 48.png" id="3_aso1i"]
 [ext_resource type="Texture2D" uid="uid://ytvuvvohxbpn" path="res://assets/The Blind Huntress/Sprite Sheet/2. Run 48 x 48.png" id="4_aso1i"]
-[ext_resource type="PackedScene" uid="uid://b6bwju7xgfpx0" path="res://scenes/healthbar.tscn" id="7_lmlo1"]
+[ext_resource type="PackedScene" uid="uid://dha31c1vgarto" path="res://scenes/v_healthbar.tscn" id="8_7twrj"]
 [ext_resource type="AudioStream" uid="uid://csx5jcw8lj43g" path="res://assets/sounds/explosion.wav" id="8_faelo"]
+[ext_resource type="PackedScene" uid="uid://dm24fb8xsscbr" path="res://scenes/detection_zone.tscn" id="9_7twrj"]
+[ext_resource type="PackedScene" uid="uid://kixaebip3qei" path="res://scenes/attack_zone.tscn" id="10_o5srw"]
+[ext_resource type="Script" uid="uid://bmjf2vqljuhm7" path="res://scripts/character_state_machine.gd" id="11_yn8yr"]
+[ext_resource type="Script" uid="uid://b0qqaem7gvrtc" path="res://scripts/villainSM/idle.gd" id="12_jsewx"]
+[ext_resource type="Script" uid="uid://vv48uyxxg0kg" path="res://scripts/villainSM/run.gd" id="13_0ri4t"]
+[ext_resource type="Script" uid="uid://bu2dcvhcx7qyc" path="res://scripts/villainSM/vattack.gd" id="14_68wxw"]
+[ext_resource type="Script" uid="uid://cscoth86t3llt" path="res://scripts/villainSM/hit.gd" id="15_c32pt"]
+[ext_resource type="Script" uid="uid://12vahealy3kc" path="res://scripts/villainSM/die.gd" id="16_51fwa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7twrj"]
 atlas = ExtResource("1_kr1wx")
@@ -291,7 +299,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5srw"]
 radius = 8.0
-height = 42.0
+height = 52.0
 
 [sub_resource type="Animation" id="Animation_waq3h"]
 length = 0.001
@@ -330,6 +338,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackZones/AttackZone:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AttackZones/AttackZone2:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AttackZones/AttackZone3:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_7twrj"]
@@ -371,6 +415,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../AttackZones/AttackZone:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../AttackZones/AttackZone2:monitoring")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AttackZones/AttackZone3:monitoring")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_o5srw"]
@@ -604,7 +684,19 @@ states/idle/position = Vector2(401.24982, 100.4375)
 states/run/node = SubResource("AnimationNodeAnimation_csmtb")
 states/run/position = Vector2(398.96985, -37.950005)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_wy7gl"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_n2mot"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_w24eb"), "idle", "hit", SubResource("AnimationNodeStateMachineTransition_yn8yr"), "hit", "idle", SubResource("AnimationNodeStateMachineTransition_jsewx"), "run", "hit", SubResource("AnimationNodeStateMachineTransition_0ri4t"), "hit", "run", SubResource("AnimationNodeStateMachineTransition_68wxw"), "hit", "attack", SubResource("AnimationNodeStateMachineTransition_c32pt"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_51fwa"), "attack", "run", SubResource("AnimationNodeStateMachineTransition_pfeon"), "hit", "die", SubResource("AnimationNodeStateMachineTransition_77d5a"), "attack", "die", SubResource("AnimationNodeStateMachineTransition_5oxdq"), "run", "die", SubResource("AnimationNodeStateMachineTransition_infth"), "idle", "die", SubResource("AnimationNodeStateMachineTransition_se6nu")]
-graph_offset = Vector2(285.6699, -132.585)
+graph_offset = Vector2(107.10986, -47.610004)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5srw"]
+size = Vector2(132, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_56jsa"]
+size = Vector2(85, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csmtb"]
+size = Vector2(73, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy7gl"]
+size = Vector2(75, 45)
 
 [node name="Hunter" type="CharacterBody2D"]
 collision_layer = 8
@@ -620,12 +712,13 @@ autoplay = "idle"
 frame_progress = 0.9108754
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(2, 2)
+scale = Vector2(1.0416667, 1.2083334)
 texture = ExtResource("1_660ry")
 hframes = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 0)
+position = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_o5srw")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -633,12 +726,6 @@ root_node = NodePath("../AnimatedSprite2D")
 libraries = {
 &"": SubResource("AnimationLibrary_lmlo1")
 }
-
-[node name="Healthbar" parent="." instance=ExtResource("7_lmlo1")]
-offset_left = 14.0
-offset_top = -20.0
-offset_right = 81.0
-offset_bottom = -16.0
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_faelo")
@@ -648,3 +735,82 @@ bus = &"sfx"
 root_node = NodePath("../AnimatedSprite2D")
 tree_root = SubResource("AnimationNodeStateMachine_faelo")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="VHealthbar" parent="." instance=ExtResource("8_7twrj")]
+offset_left = 1.0
+offset_top = -27.0
+offset_right = 61.0
+offset_bottom = -23.0
+
+[node name="DetectionZone" parent="." instance=ExtResource("9_7twrj")]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
+position = Vector2(6, 2)
+shape = SubResource("RectangleShape2D_o5srw")
+
+[node name="AttackZones" type="Node2D" parent="."]
+
+[node name="AttackZone" parent="AttackZones" instance=ExtResource("10_o5srw")]
+collision_layer = 8
+collision_mask = 3
+monitoring = false
+
+[node name="aZone" type="CollisionShape2D" parent="AttackZones/AttackZone"]
+position = Vector2(34.5, 8.5)
+shape = SubResource("RectangleShape2D_56jsa")
+
+[node name="AttackZone2" parent="AttackZones" instance=ExtResource("10_o5srw")]
+collision_layer = 8
+collision_mask = 3
+monitoring = false
+
+[node name="aZone2" type="CollisionShape2D" parent="AttackZones/AttackZone2"]
+position = Vector2(39.5, 8.5)
+shape = SubResource("RectangleShape2D_csmtb")
+
+[node name="AttackZone3" parent="AttackZones" instance=ExtResource("10_o5srw")]
+collision_layer = 8
+collision_mask = 3
+monitoring = false
+
+[node name="aZone3" type="CollisionShape2D" parent="AttackZones/AttackZone3"]
+position = Vector2(75.5, -5.5)
+shape = SubResource("RectangleShape2D_wy7gl")
+
+[node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("current_state", "character", "animation_tree")]
+script = ExtResource("11_yn8yr")
+current_state = NodePath("Idle")
+character = NodePath("..")
+animation_tree = NodePath("../AnimationTree")
+metadata/_custom_type_script = "uid://bmjf2vqljuhm7"
+
+[node name="Idle" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("run_state")]
+script = ExtResource("12_jsewx")
+run_state = NodePath("../Run")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Run" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("attack_state")]
+script = ExtResource("13_0ri4t")
+attack_state = NodePath("../Attack")
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Attack" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("run_state", "dead_state")]
+script = ExtResource("14_68wxw")
+run_state = NodePath("../Run")
+dead_state = NodePath("../Die")
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Hit" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("dead_state", "idle_state")]
+script = ExtResource("15_c32pt")
+dead_state = NodePath("../Die")
+idle_state = NodePath("../Idle")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
+
+[node name="Die" type="Node" parent="CharacterStateMachine"]
+script = ExtResource("16_51fwa")
+can_move = false
+metadata/_custom_type_script = "uid://wyq0t0odpsub"
