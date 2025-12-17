@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://bixpefq4retir"]
+
+[ext_resource type="Script" uid="uid://cywlhkprkq553" path="res://scripts/scroll_ui.gd" id="1_hkdqb"]
+[ext_resource type="Texture2D" uid="uid://wvlyqd3rofoi" path="res://assets/collectibles/Scrolls/ScrollFire.png" id="1_jraxv"]
+[ext_resource type="Texture2D" uid="uid://dt2s08b0mpac2" path="res://assets/collectibles/Scrolls/ScrollIce.png" id="2_jddsv"]
+[ext_resource type="Texture2D" uid="uid://bl6thxw76bgy0" path="res://assets/collectibles/Scrolls/ScrollRock.png" id="3_hkdqb"]
+[ext_resource type="Texture2D" uid="uid://bp5dic7iw0n7m" path="res://assets/collectibles/Scrolls/ScrollThunder.png" id="4_nnsk6"]
+
+[node name="ScrollUI" type="CanvasLayer"]
+script = ExtResource("1_hkdqb")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 119.0
+offset_bottom = 36.0
+
+[node name="FireScroll" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_jraxv")
+
+[node name="WaterScroll" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_jddsv")
+
+[node name="EarthScroll" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_hkdqb")
+
+[node name="ThunderScroll" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_nnsk6")

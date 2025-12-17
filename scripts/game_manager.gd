@@ -1,6 +1,11 @@
 extends Node
 
-var previous_scene_path: String = ""
+var collected_scrolls: Array = []
+var defeated_enemies: Array = []
+var collectibles: Array = []
+# GameManager.gd
+var player_position: Vector2 = Vector2.ZERO
+
 
 #health logic
 var max_health = 200
@@ -19,15 +24,18 @@ func reset_health():
 #points logic
 var score = 0
 var scroll = 0
+var coins = 0
 
 
 #update score
 func add_point():
 	score += 1
+	coins += 1
 	print(score)
 
 func reset_score():
 	score = 0
+	coins = 0
 
 func collect_scroll():
 	score += 5
@@ -36,7 +44,15 @@ func collect_scroll():
 func enable_defense():
 	score += 3
 	
+
+func reset_enemies():
+	defeated_enemies.clear()
+
+func reset_scrolls():
+	collected_scrolls.clear()
 	
+func reset_collectibles():
+	collectibles.clear()
 	
 	
 	

@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var sprite2D: Sprite2D = $Sprite2D
 @onready var state_machine: CharacterStateMachine = $CharacterStateMachine
 @onready var target_player: Node = null
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 
 #health variables
@@ -18,6 +19,9 @@ var is_dead: bool = false
 signal health_updated(new_health) 
 
 func _ready():
+	if GameManager.defeated_enemies.has(self.name):
+		queue_free()
+		
 	if is_dead:
 		return
 	
@@ -26,7 +30,8 @@ func _ready():
 	healthbar.max_value = max_health
 	healthbar.value = current_health
 	health_updated.connect(healthbar.update_health_UI)
-
+	animation_tree.active = true
+	
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	move_and_slide()
@@ -44,6 +49,7 @@ func hit(damage: float = 0):
 	if damage == 0:
 		damage = damage_amount
 	set_health(current_health - damage_amount)
+	death_sound.play() 
 	state_machine.switch_state(state_machine.get_node("Hit"))
 
 
@@ -52,6 +58,8 @@ func die():
 		return
 	is_dead = true 
 	print("I got to nighbourne die trigger")
+	if not GameManager.defeated_enemies.has(self.name):
+		GameManager.defeated_enemies.append(self.name)
 	death_sound.play() 
 	state_machine.switch_state(state_machine.get_node("Die"))
 

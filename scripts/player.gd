@@ -11,7 +11,7 @@ extends CharacterBody2D
 @onready var sword_l: Area2D = $SwordL
 
 
-@export var speed: float = 130.0
+@export var speed: float = 250.0
 const JUMP_VELOCITY = -400.0
 
 var is_dead: bool = false
@@ -37,8 +37,12 @@ func _physics_process(delta):
 	#handle flipping sprite image
 	if direction.x > 0:
 		player.flip_h = false
+		sword_l.position.x = 0
+		sword_s.position.x = 0
 	elif direction.x < 0:
 		player.flip_h = true
+		sword_l.position.x = -65
+		sword_s.position.x = -65
 	
 	#handle speed
 	if direction.x != 0 && state_machine.check_can_move():
@@ -61,6 +65,9 @@ func _ready() -> void:
 	GameManager.max_health = 200
 	animation_tree.active = true
 	print("The player's current health is " , GameManager.current_health)
+	# restore position if retrying
+	if GameManager.player_position != Vector2.ZERO:
+		global_position = GameManager.player_position
 
 	
 	
@@ -78,10 +85,10 @@ func player_damage(damage_amount):
 func die():
 	if is_dead:
 		return
-	
-	GameManager.previous_scene_path = get_tree().current_scene.scene_file_path
-	
+
 	is_dead = true
+	 # save current position before dying
+	GameManager.player_position = global_position
 	death_sound.play()
 	state_machine.switch_state(state_machine.get_node("Death"))
 	#player.play("die")
@@ -106,9 +113,12 @@ func defense_tween():
 	is_defense_active = false 
 
 func health_tween():
+	#dont interrupt tween
+	if is_defense_active:
+		return
 	# Change player color 
 	var tween := create_tween()
-	tween.tween_property(self, "modulate", Color.PEACH_PUFF, 0.5)
+	tween.tween_property(self, "modulate", Color.MEDIUM_PURPLE, 0.5)
 	await get_tree().create_timer(2.0).timeout
 	# Change color back 
 	tween = create_tween()

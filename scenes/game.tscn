@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ct5eak6g07nb2"]
+[gd_scene load_steps=16 format=3 uid="uid://ct5eak6g07nb2"]
 
 [ext_resource type="Script" uid="uid://dgdfoimt3f4c6" path="res://scripts/game_manager.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dghx6hmkedlum" path="res://scenes/world.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://bwd1lp5fanqat" path="res://scenes/player.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://sm0x5johk8eg" path="res://scenes/goblin.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://cbw56ibje84d8" path="res://scenes/hunter.tscn" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://x3wbhb5bbs2h" path="res://scenes/nightbourne.tscn" id="6_p57ef"]
 [ext_resource type="PackedScene" uid="uid://cb76ymwmsuior" path="res://scenes/coin.tscn" id="7_vtaks"]
 [ext_resource type="PackedScene" uid="uid://ccb8lg534xqjs" path="res://scenes/defense.tscn" id="8_kvpfn"]
@@ -12,6 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://b1rkpv02c0kg8" path="res://scenes/fire_scroll.tscn" id="10_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://y7ugfyxvv6c4" path="res://scenes/water_scroll.tscn" id="10_kvuet"]
 [ext_resource type="PackedScene" uid="uid://b2i0oy2n4c5m3" path="res://scenes/thunder_scroll.tscn" id="12_dinhu"]
+[ext_resource type="PackedScene" uid="uid://cd52s8i7r52x" path="res://scenes/health.tscn" id="13_kvuet"]
+[ext_resource type="PackedScene" uid="uid://bixpefq4retir" path="res://scenes/scroll_ui.tscn" id="14_ir15t"]
+[ext_resource type="PackedScene" uid="uid://dwx0lefwm0w7e" path="res://scenes/exit.tscn" id="14_trtic"]
+[ext_resource type="PackedScene" uid="uid://37rj0vsp17s1" path="res://scenes/music.tscn" id="15_ir15t"]
 
 [node name="Game" type="Node2D"]
 
@@ -20,15 +23,19 @@ unique_name_in_owner = true
 script = ExtResource("1_uwrxv")
 
 [node name="World" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(48, 4)
+
+[node name="ScrollUI" parent="." instance=ExtResource("14_ir15t")]
 
 [node name="Player" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-904, 115)
+position = Vector2(-927, -14)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-904, 115)
+position = Vector2(-927, -14)
+zoom = Vector2(0.8, 0.8)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
@@ -245,7 +252,7 @@ position = Vector2(12463, -344)
 position = Vector2(13078, -181)
 
 [node name="Coin70" parent="Coins" instance=ExtResource("7_vtaks")]
-position = Vector2(13581, 115)
+position = Vector2(13658, 149)
 
 [node name="Coin71" parent="Coins" instance=ExtResource("7_vtaks")]
 position = Vector2(12567, 93)
@@ -257,7 +264,7 @@ position = Vector2(13233, -403)
 position = Vector2(13751, -247)
 
 [node name="Coin74" parent="Coins" instance=ExtResource("7_vtaks")]
-position = Vector2(13862, -269)
+position = Vector2(13842, -253)
 
 [node name="Coin75" parent="Coins" instance=ExtResource("7_vtaks")]
 position = Vector2(14290, -33)
@@ -384,48 +391,43 @@ position = Vector2(11709, -80)
 [node name="Goblin15" parent="Goblins" instance=ExtResource("4_lbhrr")]
 position = Vector2(11450, -88)
 
-[node name="Hunters" type="Node2D" parent="."]
+[node name="Goblin16" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(14821, 158)
 
-[node name="Hunter" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(15241, 949)
+[node name="Goblin17" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(16471, 255)
 
-[node name="Hunter2" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(122, 275)
+[node name="Goblin18" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(18419, 404)
 
-[node name="Hunter3" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(131, 526)
+[node name="Goblin19" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(8880, -32)
 
-[node name="Hunter4" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(3111, 451)
+[node name="Goblin20" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(4550, -272)
 
-[node name="Hunter5" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(5026, 953)
+[node name="Goblin21" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(920, -237)
 
-[node name="Hunter6" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(6462, -31)
+[node name="Goblin22" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(-20, 268)
 
-[node name="Hunter7" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(11560, -143)
+[node name="Goblin23" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(2910, -170)
 
-[node name="Hunter8" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(16456, -126)
+[node name="Goblin24" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(6204, -105)
 
-[node name="Hunter9" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(19709, 796)
-
-[node name="Hunter10" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(19763, 866)
-
-[node name="Hunter11" parent="Hunters" instance=ExtResource("5_iywne")]
-position = Vector2(3648, 351)
+[node name="Goblin25" parent="Goblins" instance=ExtResource("4_lbhrr")]
+position = Vector2(19619, 848)
 
 [node name="Nightbournes" type="Node2D" parent="."]
 
 [node name="Nightbourne" parent="Nightbournes" instance=ExtResource("6_p57ef")]
-position = Vector2(-115, 211)
+position = Vector2(58, 278)
 
 [node name="Nightbourne2" parent="Nightbournes" instance=ExtResource("6_p57ef")]
-position = Vector2(48, 211)
+position = Vector2(171, 261)
 
 [node name="Nightbourne3" parent="Nightbournes" instance=ExtResource("6_p57ef")]
 position = Vector2(2455, 303)
@@ -463,6 +465,33 @@ position = Vector2(16146, -476)
 [node name="Nightbourne14" parent="Nightbournes" instance=ExtResource("6_p57ef")]
 position = Vector2(16622, -472)
 
+[node name="Nightbourne15" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(-113, 283)
+
+[node name="Nightbourne16" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(2894, 460)
+
+[node name="Nightbourne17" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(3765, 318)
+
+[node name="Nightbourne18" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(5275, 927)
+
+[node name="Nightbourne19" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(6321, -69)
+
+[node name="Nightbourne20" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(11684, -124)
+
+[node name="Nightbourne21" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(15382, 947)
+
+[node name="Nightbourne22" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(16285, -227)
+
+[node name="Nightbourne23" parent="Nightbournes" instance=ExtResource("6_p57ef")]
+position = Vector2(19792, 662)
+
 [node name="Defenses" type="Node2D" parent="."]
 
 [node name="Defense" parent="Defenses" instance=ExtResource("8_kvpfn")]
@@ -481,7 +510,7 @@ position = Vector2(4417, -6)
 position = Vector2(4423, 541)
 
 [node name="Defense6" parent="Defenses" instance=ExtResource("8_kvpfn")]
-position = Vector2(5612, 35)
+position = Vector2(5650, 31)
 
 [node name="Defense7" parent="Defenses" instance=ExtResource("8_kvpfn")]
 position = Vector2(6596, -439)
@@ -501,6 +530,24 @@ position = Vector2(18327, -228)
 [node name="Defense12" parent="Defenses" instance=ExtResource("8_kvpfn")]
 position = Vector2(17372, -21)
 
+[node name="Defense13" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(19619, 569)
+
+[node name="Defense14" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(2809, 135)
+
+[node name="Defense15" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(20272, 80)
+
+[node name="Defense16" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(3841, -348)
+
+[node name="Defense17" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(9452, 222)
+
+[node name="Defense18" parent="Defenses" instance=ExtResource("8_kvpfn")]
+position = Vector2(15159, 263)
+
 [node name="Scrolls" type="Node2D" parent="."]
 
 [node name="EarthScroll" parent="Scrolls" instance=ExtResource("9_dinhu")]
@@ -514,3 +561,80 @@ position = Vector2(16726, -179)
 
 [node name="ThunderScroll" parent="Scrolls" instance=ExtResource("12_dinhu")]
 position = Vector2(19865, 824)
+
+[node name="Healths" type="Node2D" parent="."]
+
+[node name="Health" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(-107, -473)
+
+[node name="Health2" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(232, 142)
+
+[node name="Health3" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(460, 551)
+
+[node name="Health4" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(2475, -330)
+
+[node name="Health5" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(4091, -508)
+
+[node name="Health6" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(4983, 152)
+
+[node name="Health7" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(6497, 341)
+
+[node name="Health8" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(6679, -137)
+
+[node name="Health9" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(9646, -277)
+
+[node name="Health10" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(12082, -170)
+
+[node name="Health11" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(14581, -99)
+
+[node name="Health12" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(15784, -327)
+
+[node name="Health13" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(17905, -376)
+
+[node name="Health14" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(20186, 444)
+
+[node name="Health15" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(19926, 16)
+
+[node name="Health16" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(15968, -469)
+
+[node name="Health17" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(16838, -485)
+
+[node name="Health18" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(487, -408)
+
+[node name="Health19" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(17198, 543)
+
+[node name="Health20" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(18977, 535)
+
+[node name="Health21" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(12386, -106)
+
+[node name="Health22" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(6893, 185)
+
+[node name="Health23" parent="Healths" instance=ExtResource("13_kvuet")]
+position = Vector2(1569, -266)
+
+[node name="Exit" parent="." instance=ExtResource("14_trtic")]
+position = Vector2(20889, -660)
+
+[node name="Music" parent="." instance=ExtResource("15_ir15t")]
+position = Vector2(2475, -330)

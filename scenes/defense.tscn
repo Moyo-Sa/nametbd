@@ -1,17 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccb8lg534xqjs"]
+[gd_scene load_steps=11 format=3 uid="uid://ccb8lg534xqjs"]
 
 [ext_resource type="Script" uid="uid://d1rrea23mr6rv" path="res://scripts/collectibles/defense.gd" id="1_o2y5x"]
-[ext_resource type="Texture2D" uid="uid://dnb07sj4sgred" path="res://assets/Health/LifePot.png" id="2_b4fmm"]
+[ext_resource type="Texture2D" uid="uid://dn6fscmacswxy" path="res://assets/collectibles/#1 - Transparent Icons.png" id="2_b4fmm"]
 [ext_resource type="AudioStream" uid="uid://oymj2mfgg116" path="res://assets/sounds/coin.wav" id="2_o2y5x"]
-[ext_resource type="Texture2D" uid="uid://bes8ntphuwbio" path="res://assets/Health/EmptyPot.png" id="3_b4fmm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8kgfg"]
 atlas = ExtResource("2_b4fmm")
-region = Rect2(0, 0, 9, 11)
+region = Rect2(32, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nwnx6"]
-atlas = ExtResource("3_b4fmm")
-region = Rect2(0, 0, 9, 11)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ij65i"]
+atlas = ExtResource("2_b4fmm")
+region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b4fmm"]
 animations = [{
@@ -20,15 +19,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_8kgfg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nwnx6")
+"texture": SubResource("AtlasTexture_ij65i")
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwnx6"]
-size = Vector2(20, 17)
+size = Vector2(34, 38)
 
 [sub_resource type="Animation" id="Animation_11l1o"]
 length = 0.001
@@ -90,7 +89,7 @@ tracks/1/path = NodePath(".:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -134,17 +133,17 @@ collision_mask = 3
 script = ExtResource("1_o2y5x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-0.99999917, 3.5000014)
-scale = Vector2(2.4444444, 1.9090908)
+position = Vector2(-11.000001, -3)
+scale = Vector2(1.7847222, 1.5014203)
 sprite_frames = SubResource("SpriteFrames_b4fmm")
 autoplay = "default"
-frame_progress = 0.91797185
+frame_progress = 0.56112796
 
 [node name="PickUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_o2y5x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 3.5)
+position = Vector2(-11, -4)
 shape = SubResource("RectangleShape2D_nwnx6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

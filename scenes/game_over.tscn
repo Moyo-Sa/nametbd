@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://cfm8833y6nwxe"]
 
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_racf3"]
+[ext_resource type="Script" uid="uid://cua6r0817dbq0" path="res://scripts/game_over.gd" id="1_racf3"]
 [ext_resource type="Texture2D" uid="uid://di20thgdalfje" path="res://assets/World/background.png" id="2_tbwuq"]
 [ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="2_wqhvx"]
 
@@ -138,9 +138,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="."]
 offset_left = 558.0
-offset_top = 272.0
+offset_top = 267.0
 offset_right = 678.0
-offset_bottom = 316.0
+offset_bottom = 311.0
 theme_override_font_sizes/font_size = 20
 text = "Game Over! "
 
@@ -169,9 +169,9 @@ frame_progress = 0.041290026
 
 [node name="scoreLabel" type="Label" parent="."]
 offset_left = 497.0
-offset_top = 321.0
+offset_top = 302.0
 offset_right = 867.0
-offset_bottom = 373.0
+offset_bottom = 354.0
 text = "You collected X out of Y coins!"
 
 [connection signal="pressed" from="newGame" to="." method="_on_new_game_pressed"]

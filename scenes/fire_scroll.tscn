@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1rkpv02c0kg8"]
+[gd_scene load_steps=11 format=3 uid="uid://b1rkpv02c0kg8"]
 
 [ext_resource type="Texture2D" uid="uid://wvlyqd3rofoi" path="res://assets/collectibles/Scrolls/ScrollFire.png" id="1_71bpi"]
 [ext_resource type="Script" uid="uid://d2xl5ht4vnaq0" path="res://scripts/collectibles/fire_scroll.gd" id="1_cdmf7"]
 [ext_resource type="AudioStream" uid="uid://oymj2mfgg116" path="res://assets/sounds/coin.wav" id="2_cdmf7"]
+[ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="4_8nl1s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8nl1s"]
 atlas = ExtResource("1_71bpi")
@@ -142,5 +143,13 @@ root_node = NodePath("../CollisionShape2D")
 libraries = {
 &"": SubResource("AnimationLibrary_d14el")
 }
+
+[node name="Label" type="Label" parent="."]
+offset_top = -23.0
+offset_right = 116.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_8nl1s")
+theme_override_font_sizes/font_size = 8
+text = "X scroll collected!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

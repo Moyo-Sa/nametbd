@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2i0oy2n4c5m3"]
+[gd_scene load_steps=11 format=3 uid="uid://b2i0oy2n4c5m3"]
 
 [ext_resource type="Script" uid="uid://42hithpimm8v" path="res://scripts/collectibles/thunder_scroll.gd" id="1_ab37u"]
 [ext_resource type="Texture2D" uid="uid://bp5dic7iw0n7m" path="res://assets/collectibles/Scrolls/ScrollThunder.png" id="2_5teqx"]
 [ext_resource type="AudioStream" uid="uid://oymj2mfgg116" path="res://assets/sounds/coin.wav" id="2_ab37u"]
+[ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="4_5teqx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6pqqf"]
 atlas = ExtResource("2_5teqx")
@@ -121,6 +122,8 @@ _data = {
 }
 
 [node name="ThunderScroll" type="Area2D"]
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_ab37u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -140,5 +143,13 @@ root_node = NodePath("../CollisionShape2D")
 libraries = {
 &"": SubResource("AnimationLibrary_d14el")
 }
+
+[node name="Label" type="Label" parent="."]
+offset_top = -23.0
+offset_right = 116.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_5teqx")
+theme_override_font_sizes/font_size = 8
+text = "X scroll collected!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -68,25 +68,29 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dqiew"]
-radius = 18.0
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3bvso"]
-radius = 19.659603
+radius = 23.021729
 
 [node name="Chainsaw" type="StaticBody2D"]
+collision_layer = 128
 collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.5, -2.5)
+scale = Vector2(1.1842105, 1.1315789)
 sprite_frames = SubResource("SpriteFrames_ghpcs")
 autoplay = "default"
 frame = 3
 frame_progress = 0.7505435
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, -2)
 shape = SubResource("CircleShape2D_dqiew")
 
 [node name="Killzone" parent="." instance=ExtResource("2_pta63")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(-0.5, -0.5)
+position = Vector2(4, -2)
 shape = SubResource("CircleShape2D_3bvso")

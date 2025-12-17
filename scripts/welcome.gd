@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-@onready var win_label: Label = $winLabel
 
 func _on_new_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
@@ -10,9 +9,3 @@ func _on_new_game_pressed() -> void:
 	GameManager.reset_scrolls()
 	GameManager.reset_collectibles()
 	GameManager.player_position = Vector2.ZERO
-
-func _ready():
-	print(GameManager.score) 
-	win_label.text =  "You collected " + str(GameManager.coins) + "/100 coins and scored " + str(GameManager.score) +  "points\n"
-	
-	

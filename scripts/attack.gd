@@ -13,6 +13,14 @@ func state_input(event: InputEvent):
 		queue_attack("lunge")
 	#timer.start()
 
+func state_process(delta):
+	# Check if player is trying to move while attacks are queued
+	var is_moving = Input.is_action_pressed("jump") or \
+					Input.is_action_pressed("move_left") or \
+					Input.is_action_pressed("move_right")
+	if is_moving and attack_queue.size() > 0:
+		attack_queue.clear()
+
 # Add attack to queue
 func queue_attack(name: String):
 	# If already attacking, add to queue

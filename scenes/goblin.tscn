@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://kixaebip3qei" path="res://scenes/attack_zone.tscn" id="16_0x8hd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eeqqe"]
-size = Vector2(29.125, 55)
+size = Vector2(36, 55)
 
 [sub_resource type="Animation" id="Animation_4yait"]
 length = 0.001
@@ -359,7 +359,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(95.94985, -109.41003)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0x8hd"]
-size = Vector2(150, 51)
+size = Vector2(180, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wbsg"]
 size = Vector2(89, 63)
@@ -376,7 +376,7 @@ texture = ExtResource("4_u21pb")
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.4375, -23.5)
+position = Vector2(0, -23.5)
 shape = SubResource("RectangleShape2D_eeqqe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -440,8 +440,8 @@ metadata/_custom_type_script = "uid://wyq0t0odpsub"
 collision_layer = 8
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionZone"]
-position = Vector2(4, -19.5)
+[node name="detection" type="CollisionShape2D" parent="DetectionZone"]
+position = Vector2(6, -27)
 shape = SubResource("RectangleShape2D_0x8hd")
 
 [node name="AttackZone" parent="." instance=ExtResource("16_0x8hd")]

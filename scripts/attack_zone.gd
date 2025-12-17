@@ -34,9 +34,9 @@ func _on_body_entered(body: Node2D) -> void:
 				"Hunter":
 					body.player_damage(10)
 				"Nightbourne":
-					body.player_damage(20)
+					body.player_damage(15)
 				_:
-					body.player_damage(10)
+					body.player_damage(2)
 		else:
 			body.die()
 			body.get_node("CollisionShape2D").queue_free()

@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" uid="uid://dm4taxuev18yi" path="res://scripts/collectibles/health.gd" id="1_58c75"]
 [ext_resource type="AudioStream" uid="uid://oymj2mfgg116" path="res://assets/sounds/coin.wav" id="2_58c75"]
-[ext_resource type="Texture2D" uid="uid://b3l7atf6fjrfc" path="res://assets/collectibles/fruit.png" id="2_but5r"]
+[ext_resource type="Texture2D" uid="uid://dn6fscmacswxy" path="res://assets/collectibles/#1 - Transparent Icons.png" id="2_but5r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r330t"]
 atlas = ExtResource("2_but5r")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 288, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcdjo"]
 atlas = ExtResource("2_but5r")
-region = Rect2(16, 0, 16, 16)
+region = Rect2(256, 288, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_but5r"]
 animations = [{
@@ -26,8 +26,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r330t"]
-radius = 3.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_58c75"]
+size = Vector2(26, 32)
 
 [sub_resource type="Animation" id="Animation_11l1o"]
 length = 0.001
@@ -133,16 +133,18 @@ collision_mask = 3
 script = ExtResource("1_58c75")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.99999964, -1.5000005)
+scale = Vector2(1.25, 1.3125)
 sprite_frames = SubResource("SpriteFrames_but5r")
 autoplay = "default"
-frame_progress = 0.16264288
+frame_progress = 0.10771063
 
 [node name="PickUp" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_58c75")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3)
-shape = SubResource("CircleShape2D_r330t")
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_58c75")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../CollisionShape2D")

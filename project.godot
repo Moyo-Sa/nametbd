@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Capstone"
-run/main_scene="uid://ct5eak6g07nb2"
+run/main_scene="uid://d31hy6wub8oyn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -64,7 +64,7 @@ lunge={
 
 [physics]
 
-2d/default_gravity=490.0
+2d/default_gravity=540.0
 
 [rendering]
 

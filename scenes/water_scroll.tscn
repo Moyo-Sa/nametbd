@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://y7ugfyxvv6c4"]
+[gd_scene load_steps=11 format=3 uid="uid://y7ugfyxvv6c4"]
 
 [ext_resource type="Texture2D" uid="uid://dt2s08b0mpac2" path="res://assets/collectibles/Scrolls/ScrollIce.png" id="1_thvs6"]
 [ext_resource type="Script" uid="uid://7tpjtflggg3e" path="res://scripts/collectibles/water_scroll.gd" id="1_wbxqk"]
 [ext_resource type="AudioStream" uid="uid://oymj2mfgg116" path="res://assets/sounds/coin.wav" id="2_wbxqk"]
+[ext_resource type="FontFile" uid="uid://bbj38keywy7em" path="res://assets/fonts/PixelOperator8.ttf" id="4_1kln7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wbxqk"]
 atlas = ExtResource("1_thvs6")
@@ -143,5 +144,13 @@ root_node = NodePath("../CollisionShape2D")
 libraries = {
 &"": SubResource("AnimationLibrary_d14el")
 }
+
+[node name="Label" type="Label" parent="."]
+offset_top = -23.0
+offset_right = 116.0
+offset_bottom = -15.0
+theme_override_fonts/font = ExtResource("4_1kln7")
+theme_override_font_sizes/font_size = 8
+text = "X scroll collected!"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

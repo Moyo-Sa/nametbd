@@ -1,48 +1,39 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6dc52erbxbu4"]
+[gd_scene load_steps=5 format=3 uid="uid://dwx0lefwm0w7e"]
 
-[ext_resource type="Texture2D" uid="uid://ce6fjfkqixyqe" path="res://asset/sprite/Brown Off.png" id="1_l0aq0"]
-[ext_resource type="Script" uid="uid://b4x4id35nvq3p" path="res://scripts/exit.gd" id="1_uyw7u"]
-[ext_resource type="AudioStream" uid="uid://67bkhqhc1rvo" path="res://asset/sounds/power_up.wav" id="3_l5n14"]
+[ext_resource type="Script" uid="uid://ckrem652y60mm" path="res://scripts/exit.gd" id="1_uyw7u"]
+[ext_resource type="FontFile" uid="uid://hra25wwkdpgi" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_c7mer"]
+[ext_resource type="AudioStream" uid="uid://67bkhqhc1rvo" path="res://assets/sounds/power_up.wav" id="3_l5n14"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uyw7u"]
-size = Vector2(32, 5)
+size = Vector2(1198, 665)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5n14"]
-atlas = ExtResource("1_l0aq0")
-region = Rect2(0, 0, 32, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c7mer"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5n14")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka15t"]
-size = Vector2(32, 9)
-
-[node name="Exit" type="StaticBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_uyw7u")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_c7mer")
-
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Exit" type="Area2D"]
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_uyw7u")
 
-[node name="exit" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_ka15t")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(583, 330.5)
+shape = SubResource("RectangleShape2D_uyw7u")
 
 [node name="ExitS" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_l5n14")
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[node name="exitL" type="Label" parent="."]
+offset_left = 26.0
+offset_top = 95.0
+offset_right = 328.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("3_c7mer")
+text = "You are almost there!"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 30.0
+offset_top = 48.0
+offset_right = 162.0
+offset_bottom = 109.0
+theme_override_fonts/font = ExtResource("3_c7mer")
+text = "Exit!"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
