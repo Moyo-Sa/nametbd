@@ -414,7 +414,6 @@ stream = ExtResource("7_ptnj4")
 bus = &"sfx"
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 tree_root = SubResource("AnimationNodeStateMachine_hfvbd")
 anim_player = NodePath("../AnimationPlayer")
 
