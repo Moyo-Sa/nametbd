@@ -28,13 +28,13 @@ position = Vector2(48, 4)
 [node name="ScrollUI" parent="." instance=ExtResource("14_ir15t")]
 
 [node name="Player" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(-927, -14)
+position = Vector2(-931, 14)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-927, -14)
+position = Vector2(-931, 14)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 position_smoothing_enabled = true
@@ -45,7 +45,7 @@ drag_vertical_enabled = true
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("7_vtaks")]
-position = Vector2(-179, 256)
+position = Vector2(-86, 167)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("7_vtaks")]
 position = Vector2(35, 249)
@@ -424,10 +424,10 @@ position = Vector2(19619, 848)
 [node name="Nightbournes" type="Node2D" parent="."]
 
 [node name="Nightbourne" parent="Nightbournes" instance=ExtResource("6_p57ef")]
-position = Vector2(58, 278)
+position = Vector2(-107, 272)
 
 [node name="Nightbourne2" parent="Nightbournes" instance=ExtResource("6_p57ef")]
-position = Vector2(171, 261)
+position = Vector2(64, 96)
 
 [node name="Nightbourne3" parent="Nightbournes" instance=ExtResource("6_p57ef")]
 position = Vector2(2455, 303)
@@ -466,7 +466,7 @@ position = Vector2(16146, -476)
 position = Vector2(16622, -472)
 
 [node name="Nightbourne15" parent="Nightbournes" instance=ExtResource("6_p57ef")]
-position = Vector2(-113, 283)
+position = Vector2(127, 277)
 
 [node name="Nightbourne16" parent="Nightbournes" instance=ExtResource("6_p57ef")]
 position = Vector2(2894, 460)
@@ -637,4 +637,3 @@ position = Vector2(1569, -266)
 position = Vector2(20889, -660)
 
 [node name="Music" parent="." instance=ExtResource("15_ir15t")]
-position = Vector2(2475, -330)

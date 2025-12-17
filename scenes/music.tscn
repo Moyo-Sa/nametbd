@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://37rj0vsp17s1"]
+[gd_scene load_steps=3 format=3 uid="uid://37rj0vsp17s1"]
 
 [ext_resource type="AudioStream" uid="uid://cig8oumss3ccu" path="res://assets/sounds/loop.mp3" id="1_05ggv"]
+[ext_resource type="Script" uid="uid://dvr03d12kc545" path="res://scripts/music.gd" id="2_ibx2e"]
 
 [node name="Music" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_05ggv")
 autoplay = true
-bus = &"sfx"
+bus = &"Music"
+script = ExtResource("2_ibx2e")
